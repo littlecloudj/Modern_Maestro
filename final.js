@@ -215,13 +215,11 @@ function drawIntroText(textContent) {
     // 특별한 스타일과 위치 적용
     fill(255, 255, 255, 150);
     //console.log("fillcheck");
-    //rect(250, 700, 500, 50);
+    rect(250, 700, 500, 50);
     fill(0);
-    textSize(70);
-    stroke(255);
+    textSize(40);
     textAlign(CENTER, CENTER);
-    text(textContent, width / 2, 690);
-    noStroke();
+    text(textContent, width / 2, 720);
   } else {
     // 일반 텍스트 스타일과 위치 적용
     fill(0);
@@ -1087,8 +1085,9 @@ function resetState() {
   fill(255); // 기본 색상: 흰색
   stroke(0); // 테두리 색상: 검정색
   strokeWeight(1); // 기본 테두리 두께: 1
-  drawingContext.shadowBlur = 0; // 그림자 흐림 초기화
-  drawingContext.shadowColor = color(0, 0, 0, 0); // 그림자 색상 초기화
+
+  colorMode(RGB);
+
   textSize(12); // 기본 텍스트 크기: 12
   textAlign(CENTER, CENTER); // 기본 텍스트 정렬: 가운데
   background(255); // 배경을 흰색으로 설정
