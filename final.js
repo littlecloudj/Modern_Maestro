@@ -1,5 +1,4 @@
-let currentState = 'intro';
-
+let currentState = "intro";
 
 //공통 변수!!!
 let font;
@@ -13,19 +12,19 @@ let finaleImg;
 let introOfficial;
 let introOfficial2;
 let introBg;
-let clickCount = 0;         // 클릭 횟수를 추적하는 변수
+let clickCount = 0; // 클릭 횟수를 추적하는 변수
 let videoCall;
 let carnegie;
 let carnegieInside;
-let showFinale = true;      // 표지를 보여줄지 여부
+let showFinale = true; // 표지를 보여줄지 여부
 
-let countdown = 2;          // 카운트다운 초기값
-let countdownStartTime;     // 카운트다운 시작 시간
+let countdown = 2; // 카운트다운 초기값
+let countdownStartTime; // 카운트다운 시작 시간
 let isCountingDown = false; // 카운트다운 진행 여부
 
 let hourglassActive = true; // hourglass 표시 여부
-let iconY;                  // 아이콘의 초기 y좌표
-let movingUp = true;        // 아이콘이 위로 움직이는지 여부
+let iconY; // 아이콘의 초기 y좌표
+let movingUp = true; // 아이콘이 위로 움직이는지 여부
 let stringsSound, windSound, drumSound;
 
 let stopImg;
@@ -40,10 +39,9 @@ let texts = [
   "손가락 모양을\n2초간 유지하면\n해당 악기가 선택됩니다!",
   "손을 위아래로 움직이면\n선택한 악기의\n볼륨이 변화합니다.",
   "정답은 없습니다. \n손모양과 손높이로\n나만의 음악을 지휘하세요!",
-  "준비되셨나요?\n엔터키를 누르면\n 공연이 시작됩니다."
+  "준비되셨나요?\n엔터키를 누르면\n 공연이 시작됩니다.",
 ];
 let currentTextIndex = 0;
-
 
 //conducting 변수 !!!
 let handPose;
@@ -83,7 +81,7 @@ function preload() {
   // 공통 리소스
   font = loadFont("assets/DungGeunMo.otf");
   finaleImg = loadImage("assets/finale.jpg");
-  
+
   // 이미지 리소스
   introOfficial = loadImage("assets/intro_official.png");
   introBg = loadImage("assets/intro_background.jpg");
@@ -109,13 +107,13 @@ function preload() {
   stringsSound = loadSound("assets/T2_strings.mp3");
   windSound = loadSound("assets/T2_wind.mp3");
   drumSound = loadSound("assets/T2_drum.mp3");
-  
+
   applause = loadSound("assets/applause.mp3");
-  
+
   strings = loadSound("assets/R_strings.mp3");
   wind = loadSound("assets/R_wind.mp3");
   drum = loadSound("assets/R_drum.mp3");
-  
+
   article = loadImage("assets/article.jpg");
   photozone = loadImage("assets/photozone.png");
   end = loadImage("assets/end.jpg");
@@ -146,7 +144,6 @@ function drawFinale() {
   text("START", width / 2, height / 2 + 30);
 }
 
-
 // 첫 번째 코드의 장면 처리
 function drawIntroScenes() {
   if (clickCount === 0) {
@@ -171,7 +168,7 @@ function drawIntroScenes() {
 
     image(carnegie, 0, 0, 1000, 750);
     drawIntroText("To Carnegie Hall...");
-    console.log("shit");
+    //console.log("textcheck");
 
     // 2초 후 자동으로 넘어가기
     if (millis() - startTime > 2000) {
@@ -182,14 +179,14 @@ function drawIntroScenes() {
     image(carnegieInside, 0, 0, 1000, 750);
     image(introOfficial2, 100, 100, 800, 450);
     textAlign(LEFT, BASELINE);
-    drawIntroText(
-      "오, 도착했군! 준비됐나?\n이제 관객들을 입장시키지!"
-    );
+    drawIntroText("오, 도착했군! 준비됐나?\n이제 관객들을 입장시키지!");
   } else if (clickCount === 5) {
     image(carnegieInside, 0, 0, 1000, 750);
     image(introOfficial2, 100, 100, 800, 450);
     textAlign(LEFT, BASELINE);
-    drawIntroText("자네가 오늘 연주할 곡은 요한 슈트라우스의 라데츠키 행진곡일세.");
+    drawIntroText(
+      "자네가 오늘 연주할 곡은 요한 슈트라우스의 라데츠키 행진곡일세."
+    );
   } else if (clickCount === 6) {
     // 타이머 초기화
     if (!isCountingDown) {
@@ -211,19 +208,20 @@ function drawIntroScenes() {
   }
 }
 
-
 function drawIntroText(textContent) {
   noStroke();
 
   if (textContent === "To Carnegie Hall...") {
-    console.log("fuck you");
     // 특별한 스타일과 위치 적용
     fill(255, 255, 255, 150);
-    rect(250, 700, 500, 50);
+    //console.log("fillcheck");
+    //rect(250, 700, 500, 50);
     fill(0);
-    textSize(40);
+    textSize(70);
+    stroke(255);
     textAlign(CENTER, CENTER);
-    text(textContent, width / 2, 720);
+    text(textContent, width / 2, 690);
+    noStroke();
   } else {
     // 일반 텍스트 스타일과 위치 적용
     fill(0);
@@ -261,10 +259,6 @@ function drawIntroText(textContent) {
     text(textContent, 120, 580);
   }
 }
-
-
-
-
 
 function drawGestureScenes() {
   image(gaugeBg, 0, 0, width / 3, height);
@@ -452,8 +446,7 @@ function drawLoadingCircle(x, y, radius, angle) {
   // 손가락 개수에 맞는 악기 이미지를 그리기
   if (isLoading) {
     let instrumentImage;
-      
-      
+
     drawingContext.shadowBlur = 0;
     drawingContext.shadowColor = color(0, 0, 0, 0);
     // fingerCount가 2, 3, 4일 때에만 악기 이미지 표시
@@ -610,19 +603,20 @@ function drawBars() {
   noFill();
   stroke(0);
   strokeWeight(6);
-  for (let i = 0; i < 5; i++) { // 네온 레이어를 여러 번 겹침
+  for (let i = 0; i < 5; i++) {
+    // 네온 레이어를 여러 번 겹침
     drawingContext.shadowBlur = 20 + i * 10; // 퍼짐 정도 증가
-    drawingContext.shadowColor = color(255); 
-  rect(333,3,665,height-6)} //화면 테두리
-  
+    drawingContext.shadowColor = color(255);
+    rect(333, 3, 665, height - 6);
+  } //화면 테두리
+
   drawingContext.shadowBlur = 0;
   drawingContext.shadowColor = color(0, 0, 0, 0);
-  
+
   noStroke();
   fill(255);
 
   image(gaugeBg, 0, 0, width * 0.33, height);
-  
 
   textSize(20);
   let maxVolume = Math.max(
@@ -653,27 +647,45 @@ function drawBars() {
   let barSpacing = 60;
   let startX = 34;
 
-  image(violinImg, startX-20, height * 0.85 - 10, 60, 60);
-  image(hornImg, startX-20 + barWidth + barSpacing, height * 0.85 - 10, 60, 60);
-  image(timpaniImg, startX + 2 * (barWidth + barSpacing)-20,height * 0.85 - 10, 60,60);
-  image(oneImg,startX+25,height * 0.9 - 10,50,50);
-  image(twoImg,startX+20 + barWidth + barSpacing,height * 0.9 - 10,50,50);
-  image(threeImg,startX + 2 * (barWidth + barSpacing) +20,height * 0.9 - 10,50,50); //게이지바 밑
-  
-  fill(200,30);
+  image(violinImg, startX - 20, height * 0.85 - 10, 60, 60);
+  image(
+    hornImg,
+    startX - 20 + barWidth + barSpacing,
+    height * 0.85 - 10,
+    60,
+    60
+  );
+  image(
+    timpaniImg,
+    startX + 2 * (barWidth + barSpacing) - 20,
+    height * 0.85 - 10,
+    60,
+    60
+  );
+  image(oneImg, startX + 25, height * 0.9 - 10, 50, 50);
+  image(twoImg, startX + 20 + barWidth + barSpacing, height * 0.9 - 10, 50, 50);
+  image(
+    threeImg,
+    startX + 2 * (barWidth + barSpacing) + 20,
+    height * 0.9 - 10,
+    50,
+    50
+  ); //게이지바 밑
+
+  fill(200, 30);
   rect(startX, height / 2 - 40, barWidth, 278);
-  fill(200,30);
+  fill(200, 30);
   rect(startX + barWidth + barSpacing, height / 2 - 40, barWidth, 278);
-  fill(200,30);
+  fill(200, 30);
   rect(startX + 2 * (barWidth + barSpacing), height / 2 - 40, barWidth, 278); //바 배경
-  
-  fill(255,90);
-  text("MAX", startX+25, height / 2 - 25);
-  fill(255,90);
+
+  fill(255, 90);
+  text("MAX", startX + 25, height / 2 - 25);
+  fill(255, 90);
   text("MAX", startX + barWidth + barSpacing + 25, height / 2 - 25);
-  fill(255,90);
+  fill(255, 90);
   text("MAX", startX + 2 * (barWidth + barSpacing) + 25, height / 2 - 25);
-  
+
   let barHeights = [
     map(currentStringVolume, 0, 1, 0, height * 0.5),
     map(currentWindVolume, 0, 1, 0, height * 0.5),
@@ -732,34 +744,34 @@ function drawBars() {
   let currentPlayTime = 0;
   let totalDuration = 0;
 
-  if (selectedInstrument === 'strings') {
+  if (selectedInstrument === "strings") {
     currentPlayTime = strings.currentTime() * 1000; // ms로 변환
     totalDuration = strings.duration() * 1000;
-  } else if (selectedInstrument === 'wind') {
+  } else if (selectedInstrument === "wind") {
     currentPlayTime = wind.currentTime() * 1000; // ms로 변환
     totalDuration = wind.duration() * 1000;
-  } else if (selectedInstrument === 'drum') {
+  } else if (selectedInstrument === "drum") {
     currentPlayTime = drum.currentTime() * 1000; // ms로 변환
     totalDuration = drum.duration() * 1000;
   }
 
   let progressBar = map(currentPlayTime, 0, totalDuration, 0, 300);
-  
+
   noStroke();
-  fill(200,30);
-  rect(670,695,300,10);
-  
+  fill(200, 30);
+  rect(670, 695, 300, 10);
+
   fill(255);
   textSize(20);
-  rect(670, 695, progressBar, 10);//재생바
-  
+  rect(670, 695, progressBar, 10); //재생바
+
   let minutes = floor(currentPlayTime / 60000);
   let seconds = floor((currentPlayTime % 60000) / 1000);
-  let timeText = nf(minutes, 2) + ":" + nf(seconds, 2); 
-  
+  let timeText = nf(minutes, 2) + ":" + nf(seconds, 2);
+
   textSize(20);
-  text(timeText,670,715);
-  text("02:56",965,715); //
+  text(timeText, 670, 715);
+  text("02:56", 965, 715); //
   textSize(15);
   textAlign(CENTER, CENTER);
   text("지휘를 종료하려면 엔터키를 누르세요", 820, 680);
@@ -776,11 +788,13 @@ function drawNeonBorder(x, y, height, barWidth) {
 }
 
 function drawBar(x, y, height, col, barWidth) {
+  push(); // 현재 스타일 상태 저장
   fill(col);
   noStroke();
   drawingContext.shadowBlur = 30;
   drawingContext.shadowColor = col;
   rect(x, y - height, barWidth, height);
+  pop(); // 이전 스타일 상태로 복원
 }
 
 function calculateHandCenter(hand) {
@@ -808,7 +822,7 @@ function countFingers(hand) {
 // setup 함수들 순서대로 !!!
 
 function introSetup() {
-  console.log('Intro setup running');
+  console.log("Intro setup running");
   createCanvas(1000, 750);
   stringsSound.setVolume(0.2);
   windSound.setVolume(0.2);
@@ -820,12 +834,12 @@ function introSetup() {
 }
 
 function conductingSetup() {
-  console.log('Conducting setup running');
+  console.log("Conducting setup running");
   createCanvas(1000, 750);
   colorMode(HSB, 360, 100, 100, 100);
   rectMode(CORNER);
   textFont(font);
-  
+
   stringsSound.stop();
   windSound.stop();
   drumSound.stop();
@@ -842,14 +856,13 @@ function conductingSetup() {
 }
 
 function outroSetup() {
-  console.log('Outro setup running');
+  console.log("Outro setup running");
   createCanvas(1000, 750);
   textFont(font);
-  
+
   strings.stop();
   wind.stop();
   drum.stop();
-  
 
   // 비디오 설정
   video = createCapture(VIDEO);
@@ -859,7 +872,7 @@ function outroSetup() {
   // 사운드 재생
   applause.setVolume(0.5);
   applause.loop(); // 사운드를 루프 재생
-  
+
   // 초기 시간 할당
   startTime = millis();
 }
@@ -940,7 +953,7 @@ function outroDraw() {
     textSize(70);
     fill(255);
     text("The End", 500, 400);
-    
+
     // 엔터키 안내 텍스트 추가
     textSize(30);
     fill(255);
@@ -953,10 +966,16 @@ function outroDraw() {
     textSize(30);
     textAlign(RIGHT, BOTTOM);
     text("Click", width - 50, height - 80);
-    triangle(width - 100, height - 70, width - 70, height - 70, width - 85, height - 50);
+    triangle(
+      width - 100,
+      height - 70,
+      width - 70,
+      height - 70,
+      width - 85,
+      height - 50
+    );
   }
 }
-
 
 // p5.js 메인 함수들 !!!
 
@@ -969,11 +988,11 @@ function setup() {
 
 function draw() {
   // 현재 상태의 draw 함수만 실행
-  if (currentState === 'intro') {
+  if (currentState === "intro") {
     introDraw();
-  } else if (currentState === 'conducting') {
+  } else if (currentState === "conducting") {
     conductingDraw();
-  } else if (currentState === 'outro') {
+  } else if (currentState === "outro") {
     outroDraw();
   }
 }
@@ -981,40 +1000,43 @@ function draw() {
 function mousePressed() {
   if (showFinale) {
     // START 버튼 클릭 판정
-    if (mouseX > width / 2 - 100 && mouseX < width / 2 + 100 &&
-        mouseY > height / 2 && mouseY < height / 2 + 60) {
+    if (
+      mouseX > width / 2 - 100 &&
+      mouseX < width / 2 + 100 &&
+      mouseY > height / 2 &&
+      mouseY < height / 2 + 60
+    ) {
       showFinale = false;
       stringsSound.loop();
       windSound.loop();
-      drumSound.loop();// 표지를 닫고 인트로 시작
+      drumSound.loop(); // 표지를 닫고 인트로 시작
     }
   } else {
-    if (currentState === 'intro') {
+    if (currentState === "intro") {
       if (clickCount < 6) {
         clickCount++;
       } else if (currentTextIndex < 9) {
         currentTextIndex++;
       }
-    } else if (currentState === 'outro' && currentIndex < 3) {
+    } else if (currentState === "outro" && currentIndex < 3) {
       currentIndex++;
     }
   }
 }
 
-
 function keyPressed() {
   if (keyCode === ENTER) {
-    if (currentState === 'intro') {
-      currentState = 'conducting';
+    if (currentState === "intro") {
+      currentState = "conducting";
       clear();
       conductingSetup();
-    } else if (currentState === 'conducting') {
-      currentState = 'outro';
+    } else if (currentState === "conducting") {
+      currentState = "outro";
       clear();
       outroSetup();
-    } else if (currentState === 'outro' && currentIndex === 3) {
+    } else if (currentState === "outro" && currentIndex === 3) {
       resetState(); // 모든 상태 초기화
-      currentState = 'intro';
+      currentState = "intro";
       currentIndex = 0;
       clickCount = 0;
       clear();
@@ -1034,6 +1056,7 @@ function resetState() {
   handCenters = [];
   bars = [0, 0, 0];
   trailColor = [];
+  newColor = color(0, 0, 0);
   targetStringVolume = 0;
   targetWindVolume = 0;
   targetDrumVolume = 0;
@@ -1060,17 +1083,13 @@ function resetState() {
   wind.stop();
   drum.stop();
   applause.stop();
-  
-  fill(255);             // 기본 색상: 흰색
-  stroke(0);             // 테두리 색상: 검정색
-  strokeWeight(1);       // 기본 테두리 두께: 1
-  drawingContext.shadowBlur = 0;      // 그림자 흐림 초기화
-  drawingContext.shadowColor = color(0, 0, 0, 0);  // 그림자 색상 초기화
-  textSize(12);          // 기본 텍스트 크기: 12
+
+  fill(255); // 기본 색상: 흰색
+  stroke(0); // 테두리 색상: 검정색
+  strokeWeight(1); // 기본 테두리 두께: 1
+  drawingContext.shadowBlur = 0; // 그림자 흐림 초기화
+  drawingContext.shadowColor = color(0, 0, 0, 0); // 그림자 색상 초기화
+  textSize(12); // 기본 텍스트 크기: 12
   textAlign(CENTER, CENTER); // 기본 텍스트 정렬: 가운데
-  background(255);       // 배경을 흰색으로 설정
+  background(255); // 배경을 흰색으로 설정
 }
-
-
-
-
