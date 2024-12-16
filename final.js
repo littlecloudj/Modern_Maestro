@@ -185,7 +185,7 @@ function drawIntroScenes() {
     image(introOfficial2, 100, 100, 800, 450);
     textAlign(LEFT, BASELINE);
     drawIntroText(
-      "자네가 오늘 연주할 곡은 요한 슈트라우스 1세의 <라데츠키 행진곡>일세."
+      "자네가 오늘 연주할 곡은 요한 슈트라우스 1세의\n<라데츠키 행진곡>일세."
     );
   } else if (clickCount === 6) {
     // 타이머 초기화
@@ -225,32 +225,43 @@ function drawIntroText(textContent) {
     fill(0);
     rect(100, 550, 800, 200);
 
-    // 삼각형 색상을 흰색으로 설정
-    fill(255);
-    triangle(860, 675, 890, 675, 875, 690);
+    if (
+      textContent === "안녕하신가? 여기 뉴욕 필하모닉일세." ||
+      textContent ===
+        "지금 수석지휘자 야닉이 심한 독감에 걸려서 오늘 공연에\n못 나오게 생겼네.\n혹시 오늘만 자네가 임시지휘자를 맡아줄 수 있는가?" ||
+      textContent ===
+        "부탁일세… 안타깝게도 리허설을 위한 시간은 없다네.\n자네의 즉흥적인 재능을 기대하지!"
+    ) {
+      // 상단과 하단의 검은색 바 설정
+      fill(0);
+      rect(0, 700, 1000, 50);
+      rect(0, 0, 1000, 50);
+      // Video Call 이미지
+      image(videoCall, 375, 700, 250, 50);
 
-    // 글꼴 설정
-    textFont(font);
+      // 삼각형 색상을 흰색으로 설정
+      fill(255);
+      triangle(860, 675, 890, 675, 875, 690);
 
-    // "Click" 텍스트 색상을 흰색으로 설정
-    fill(255);
-    textSize(28);
-    text("Click", 780, 690);
+      // 글꼴 설정
+      textFont(font);
 
-    if(textContent === "안녕하신가? 여기 뉴욕 필하모닉일세." 
-       || textContent === "지금 수석지휘자 야닉이 심한 독감에 걸려서 오늘 공연에\n못 나오게 생겼네.\n혹시 오늘만 자네가 임시지휘자를 맡아줄 수 있는가?" 
-       || textContent === "부탁일세… 안타깝게도 리허설을 위한 시간은 없다네.\n자네의 즉흥적인 재능을 기대하지!"){
-    // 상단과 하단의 검은색 바 설정
-    fill(0);
-    rect(0, 700, 1000, 50);
-    rect(0, 0, 1000, 50);
-    // Video Call 이미지
-    image(videoCall, 375, 700, 250, 50);
+      // "Click" 텍스트 색상을 흰색으로 설정
+      fill(255);
+      textSize(28);
+      text("Click", 780, 690);
 
-    // Video Call 텍스트 색상을 흰색으로 설정
-    fill(255);
-    textSize(25);
-    text("Video Call from New York Philharmonic Official", 20, 30);
+      // Video Call 텍스트 색상을 흰색으로 설정
+      fill(255);
+      textSize(25);
+      text("Video Call from New York Philharmonic Official", 20, 30);
+    } else {
+      // 삼각형 색상을 흰색으로 설정
+      fill(255);
+      triangle(860, 715, 890, 715, 875, 730);
+      textFont(font);
+      textSize(28);
+      text("Click", 780, 730);
     }
     // 대사 텍스트 색상을 흰색으로 설정
     fill(255);
