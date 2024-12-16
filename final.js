@@ -772,7 +772,7 @@ function drawBars() {
   text("02:56", 965, 715); //
   textSize(15);
   textAlign(CENTER, CENTER);
-  text("지휘를 종료하려면 엔터키를 누르세요", 820, 680);
+  text("지휘를 종료하려면 ENTER키를 누르세요", 820, 680);
 }
 
 function drawNeonBorder(x, y, height, barWidth) {
