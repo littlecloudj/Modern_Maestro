@@ -365,7 +365,7 @@ function drawGestureScenes() {
   if (currentTextIndex >= 8) {
     fill(255);
     textSize(50);
-    text("ENTER!", 850, 700);
+    text("ENTER!", 870, 700);
   } else {
     fill(255);
     triangle(920, 695, 950, 695, 935, 720);
@@ -772,7 +772,7 @@ function drawBars() {
   text("02:56", 965, 715); //
   textSize(15);
   textAlign(CENTER, CENTER);
-  text("지휘를 종료하려면 ENTER키를 누르세요", 820, 680);
+  text("지휘를 종료하려면 ENTER를 누르세요", 820, 680);
 }
 
 function drawNeonBorder(x, y, height, barWidth) {
