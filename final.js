@@ -127,7 +127,7 @@ function drawFinale() {
   // "MODERN MAESTRO" 텍스트 표시
   fill(255);
   textFont(font);
-  textSize(80);
+  textSize(100);
   textAlign(CENTER, CENTER);
   text("MODERN MAESTRO", width / 2, height / 2 - 100);
 
@@ -365,7 +365,7 @@ function drawGestureScenes() {
   if (currentTextIndex >= 8) {
     fill(255);
     textSize(50);
-    text("ENTER!", 870, 700);
+    text("ENTER!", 880, 700);
   } else {
     fill(255);
     triangle(920, 695, 950, 695, 935, 720);
@@ -922,7 +922,7 @@ function outroDraw() {
     textAlign(CENTER, CENTER);
     textSize(70);
     fill(255);
-    text("YOU are the maestro!", 500, 400);
+    text("YOU are the best maestro!", 500, 400);
   } else if (currentIndex === 1) {
     image(article, 0, 0, 1000, 750);
     textAlign(CENTER, CENTER);
@@ -955,7 +955,7 @@ function outroDraw() {
     // 엔터키 안내 텍스트 추가
     textSize(30);
     fill(255);
-    text("ENTER를 눌러 처음으로 돌아가세요", 500, 700);
+    text("ENTER를 눌러 처음으로 돌아가세요.", 500, 700);
   }
 
   // 공통으로 "Click"과 아래 삼각형 표시 (마지막 화면 제외)
