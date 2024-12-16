@@ -922,7 +922,7 @@ function outroDraw() {
     textAlign(CENTER, CENTER);
     textSize(70);
     fill(255);
-    text("YOU are the best maestro!", 500, 400);
+    text("YOU are the maestro!", 500, 400);
   } else if (currentIndex === 1) {
     image(article, 0, 0, 1000, 750);
     textAlign(CENTER, CENTER);
