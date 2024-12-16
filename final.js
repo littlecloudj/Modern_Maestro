@@ -127,9 +127,9 @@ function drawFinale() {
   // "MODERN MAESTRO" 텍스트 표시
   fill(255);
   textFont(font);
-  textSize(100);
+  textSize(120);
   textAlign(CENTER, CENTER);
-  text("MODERN MAESTRO", width / 2, height / 2 - 100);
+  text("MODERN MAESTRO", width / 2, height / 2 - 110);
 
   // START 버튼 그리기
   stroke(255);
